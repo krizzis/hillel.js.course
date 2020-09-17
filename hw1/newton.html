@@ -4,9 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Newton's second law</title>
-    <script src='../js/helpers.js'>
     </script>
     <script>
+        var numericPrompt = function(title) {
+            while(true){
+                let res = prompt(title);
+                if (!isNaN(res)) {
+                    return res;
+                }
+                if (res === null) break;
+                else alert("Enter a number");
+            }
+        }
         var f = numericPrompt('Enter a force in newtons');
         var m = numericPrompt('Enter a mass in kilos')
         document.write('************** <br>')

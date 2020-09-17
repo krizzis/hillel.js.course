@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students list</title>
+    <script>
+        var checkPrompt = function(title) {
+            while(true){
+                let res = prompt(title);
+                if (parseInt(res)) {
+                    return res;
+                }
+                else alert(`Please enter student info in format 'Age, First name, Last name`);
+            }
+        }
+        var firstStudent = checkPrompt('Enter info of first student');
+        var secondStudent = checkPrompt('Enter info of second student');
+        var thirdStudent = checkPrompt('Enter info of third student');
+        var averageAge = (parseInt(firstStudent) + parseInt(secondStudent) + parseInt(thirdStudent))/3;
+        console.log('**************');
+        console.log('Список студентов зарегестрировавшихся на вебинар:');
+        console.log(`1. ${firstStudent}`);
+        console.log(`2. ${secondStudent}`);
+        console.log(`3. ${thirdStudent}`);
+        console.log(`-------------- Средний возраст студента: ${Math.round(averageAge)} --------------`);
+        console.log('**************');
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
