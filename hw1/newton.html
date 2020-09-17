@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newton's second law</title>
+    <script src='../js/helpers.js'>
+    </script>
+    <script>
+        var f = numericPrompt('Enter a force in newtons');
+        var m = numericPrompt('Enter a mass in kilos')
+        document.write('************** <br>')
+
+        if (f && m && m != 0) {
+            document.writeln(`Ускорение тела при силе F = ${f} N, и массе m = ${m} kg : <br>`);
+            document.writeln('--------------------<br>')
+            document.writeln(`a = ${(f/m).toFixed(2)} m⋅s−2<br>`)
+            document.writeln('--------------------<br>')
+            document.writeln('end.')
+        }
+        else if (m == 0) {
+            document.writeln('Error: Mass cannot be 0. Please refresh the page and try again');
+        }
+        else {
+            document.writeln(`Error: You don't have entered all the values. Please refresh the page and try again`);
+        }
+    </script>
+</head>
+<body>
+   
+</body>
+</html>
