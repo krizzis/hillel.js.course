@@ -53,8 +53,10 @@ var sumNum = function () {
 */
 
 var numericPrompt = function() {
-	while(true) {
-		let res = prompt('Please enter a number');
+	var res = null;
+	while (!res || isNaN(res)) {
+		res = prompt('Please enter a number');
+		res ? res = res.trim() : null;
 		if (res === null) return null;
 		else if (res && !isNaN(res.replace(',', '.'))) {
 			return res;
@@ -64,6 +66,7 @@ var numericPrompt = function() {
 		}
 	}
 };
+
 
 /*
 4. Посчитать факториал n!, где n - ввести с клавиатуры.
@@ -104,8 +107,8 @@ var isPrime = function () {
 		alert('Number is not an integer');
 		return;
 	}
-	else if (num === 2) {
-		alert(`Number ${num} is composite`);
+	else if (num == 2) {
+		alert(`Number ${num} is prime`);
 	}
 	else if (num > 2) {
 		var i = 2;
@@ -116,7 +119,7 @@ var isPrime = function () {
 				continue;
 			}
 			if (num % i == 0) {
-				alert(`Number ${num} is composite`);
+				alert(`Number ${num} is composite. Found divider is ${i}`);
 				return;
 			}
 			i += 1;
