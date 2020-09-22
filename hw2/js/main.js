@@ -59,7 +59,7 @@ var numericPrompt = function() {
 		res ? res = res.trim() : null;
 		if (res === null) return null;
 		else if (res && !isNaN(res.replace(',', '.'))) {
-			return res;
+			return +res;
 		}
 		else {
 			alert('This is not a number. Please try again');
@@ -129,4 +129,60 @@ var isPrime = function () {
 	else {
 		alert('Number should be greater than 1');
 	}
+};
+
+/*
+(Доп) Ввести с клавиатуры 2 числа a и b (где a < b). Запустить цикл перебора от a до b. Вывести в консоль квадраты чётных чисел.
+*/
+
+var squareEven = function () {
+	var a = numericPrompt('Enter first number');
+	var b = numericPrompt('Enter second number');
+	if (a >= b) {
+		console.log('First number must be lower then second one');
+	}
+	else {
+		var arr = [];
+		for (var i = parseInt(a); i <= b; i++) {
+			if (i % 2 == 0) {
+				arr.push( i ** 2 );
+			}
+		}
+		console.log(arr);
+	}
+};
+
+/*
+7. (Доп) Нарисовать квадрат http://prntscr.com/ull1y4
+*/
+
+var drawSquare = function () {
+	var len = parseInt(numericPrompt('Enter side lenth'));
+	var square = '';
+	for (var i = 0; i < len; i++) { 
+		let row = '';
+		for (var j = 0; j < len; j++) { 
+			if (j == 0 || j == len-1) row += '*';
+			else if (i == 0 || i == len-1) row += '*';
+			else row += ' ';
+		}
+		square += row + '\n';
+	}
+	console.log(square);
+};	
+
+/*
+8. (Доп) Вывести n чисел из ряда Фибоначчи, где n - вводится с клавиатуры
+*/
+
+var fibonacci = function () {
+	var len = parseInt(numericPrompt('Enter side lenth'));
+	var arr = [];
+	for (var i=0; i <= len; i++) {
+		if (i == 0 || i == 1) arr.push(i);
+		else {
+			arr.push(arr[i-1] + arr[i-2]);
+		}
+	}
+	console.log(arr);
 };
