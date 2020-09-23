@@ -7,23 +7,23 @@ var login = function() {
 	const password = 'DarkLord';
 
 	var user = prompt('Enter an username');
-	if (user && user === username) {
+	if (user === username) {
 		var pass = prompt('Enter a password');
 		if (pass === password) {
 			alert(`Welcome, ${user}`);
 		}
-		else if (pass) {
-			alert('The user name or password is incorrect');
-		}
-		else {
+		else if (pass === null) {
 			alert('Login is canceled');    
 		}
+		else {
+			alert('The user name or password is incorrect');
+		}
 	}
-	else if (user) {
-		alert('You have no permission to login');
+	else if (user === null) {
+		alert('Login is canceled');
 	}
 	else {
-		alert('Login is canceled');
+		alert('You have no permission to login');
 	}
 };
 
@@ -33,20 +33,17 @@ var login = function() {
 2.3 Посчитать сумму чётных чисел.
 */
 
-var sumNumbers = function (maxNum, divider = 1) {
-	var sum = 0;
+var sumNum = function() {
+	const maxNum = 150;
+	var sumAll = 0;
+	var sumEven = 0;
 	for (var i = 1; i <= maxNum; i++) {
-		if (i % divider == 0) 
-			sum += i;
+		sumAll += i;
+		if (i % 2 === 0) sumEven += i;
 	}
-	return sum;
-};
-
-var sumNum = function () {
-	var maxNum = 150;
-	alert(`Sum of all numbers up to ${maxNum} is ${sumNumbers(maxNum)}`);
-	alert(`Sum of all even numbers up to ${maxNum} is ${sumNumbers(maxNum, 2)}`);
-};
+	alert(`Sum of all numbers up to ${maxNum} is ${sumAll}`);
+	alert(`Sum of all even numbers up to ${maxNum} is ${sumEven}`);
+}
 
 /*
 3. "Заставить" пользователя ввести с клавиатуры число. Просить пользователя ввести число до тех пор, пока мы не получим число.
@@ -56,7 +53,7 @@ var numericPrompt = function() {
 	var res = null;
 	while (!res || isNaN(res)) {
 		res = prompt('Please enter a number');
-		res ? res = res.trim() : null;
+		res = res ? res.trim() : null;
 		if (res === null) return null;
 		else if (res && !isNaN(res.replace(',', '.'))) {
 			return +res;
