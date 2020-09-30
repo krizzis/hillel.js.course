@@ -28,6 +28,9 @@ var swapInArray = function() {
     const min = 0, max = 100;
 
     var arr = createRandomArray(n, min, max);
+    // или
+    // var arr = [1,2,3,4,5,6,7];
+
     console.log(arr, 'Original array');
 
     var lastPosition = n % 2 == 0 ? n - 1 : n - 2;
@@ -43,6 +46,44 @@ var swapInArray = function() {
 Найти колонку, где сумма элементов найбольшая.
 */
 
+/*Решение без лишних циклов
+Как мне кажется я здесь добавил много костылей. 
+Просьба подсказать в какую сторону посмотреть, что бы их избежать ) 
+*/
+var minMaxColumns = function () {
+    const colCount = 5, rowsCount = 5;
+    const min = 0, max = 100;
+
+    var twoDimArray = [];
+    var colSum = [];
+    var minIndex = 0, maxIndex = 0;
+    var  minSum, maxSum;
+    
+    for (var rows = 0; rows < rowsCount; rows++) {
+        twoDimArray[rows] = [];
+        for (var cols = 0; cols < colCount; cols++) {
+            
+            twoDimArray[rows][cols] = randomInt(min, max);
+            
+            if (!colSum[cols]) colSum.push(0);
+            colSum[cols] += twoDimArray[rows][cols];
+
+            if (rows === rowsCount - 1) {
+                minSum = (colSum[cols] < minSum || !minSum) ? colSum[cols] : minSum;
+                minIndex = (colSum[cols] === minSum) ? cols : minIndex;
+                maxSum = (colSum[cols] > maxSum || !maxSum) ? colSum[cols] : maxSum;
+                maxIndex = (colSum[cols] === maxSum) ? cols : maxIndex;
+            }
+        }
+    }
+    console.log(twoDimArray, 'Original array');
+
+    console.log(`Min sum is ${minSum} in ${minIndex+1} column`);
+    console.log(`Max sum is ${maxSum} in ${maxIndex+1} column`);    
+}
+
+/*Альтернатиыное решение*/
+
 function columnSum(arr, col) {
     var res = 0;
     for (var i = 0; i < arr.length; i++) {
@@ -51,7 +92,7 @@ function columnSum(arr, col) {
     return res;
 }
 
-var minMaxColumns = function () {
+var minMaxColumnsTwo = function () {
     const col = 5, row = 5;
     const min = 0, max = 100;
 

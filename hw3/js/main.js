@@ -2,9 +2,9 @@ function randomInt(min, max) {
 	return min + Math.floor((max - min) * Math.random());
 }
 
-function createRandomArray(len, min, max) {
-	return Array.from({length: len}, () => randomInt(min, max));
-}
+// function createRandomArray(len, min, max) {
+// 	return Array.from({length: len}, () => randomInt(min, max));
+// }
 
 /*
 1. Заполнить массив А случайными числами (диазпазон на ваше усмотрение). 
@@ -15,11 +15,10 @@ var changeElements = function () {
 	const n = 20;
 	const min = 1, max = 100;
 
-	var randomArray = createRandomArray(n, min, max);
+	var randomArray = [];
 
-	console.log(randomArray, 'Original array');
 	for (var i = 0; i < n; i++) {
-		if (i % 2 === 1) randomArray[i] = 0;
+		randomArray[i] = (i % 2 === 0) ? randomInt(min, max) : 0;
 	}
 	console.log(randomArray, 'Result array');
 };
@@ -53,8 +52,7 @@ var minMaxInArray = function () {
 	const n = 20;
 	const min = 1, max = 100;
 
-	var randomArray = createRandomArray(n, min, max);
-	console.log(randomArray, 'Original array');
+	var randomArray = [];
 
 	/* 
     Требование в задаче написано неоднозначно, поэтому я исходил из предположения, что мы 
@@ -64,15 +62,12 @@ var minMaxInArray = function () {
 	var minIndex = 0;
 	var maxIndex = 0;
 	for (var i = 0; i < n; i++) {
+		randomArray[i] = randomInt(min, max);
 		if (randomArray[i] < randomArray[minIndex]) minIndex = i;
 		if (randomArray[i] > randomArray[maxIndex]) maxIndex = i;
 	}
 
-	/* Или такой вариант. Какой лучше / быстрее?
-    var minIndex = randomArray.indexOf(Math.min(...randomArray));
-    var maxIndex = randomArray.indexOf(Math.max(...randomArray)); 
-   */
-
+	console.log(randomArray, 'Original array');
 	console.log(randomArray[minIndex], 'min', randomArray[maxIndex], 'max');
 
 	var resultArray = (minIndex < maxIndex) ? randomArray.slice(minIndex + 1, maxIndex) : randomArray.slice(maxIndex + 1, minIndex);
