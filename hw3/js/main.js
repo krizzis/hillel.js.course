@@ -2,9 +2,9 @@ function randomInt(min, max) {
 	return min + Math.floor((max - min) * Math.random());
 }
 
-// function createRandomArray(len, min, max) {
-// 	return Array.from({length: len}, () => randomInt(min, max));
-// }
+function createRandomArray(len, min, max) {
+	return Array.from({length: len}, () => randomInt(min, max));
+}
 
 /*
 1. Заполнить массив А случайными числами (диазпазон на ваше усмотрение). 
