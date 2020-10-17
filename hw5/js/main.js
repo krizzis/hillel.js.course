@@ -21,8 +21,8 @@ var compareArrays = function(arr1, arr2) {
     for (var i = 0; i < maxLen; i++) {
         // тут так и не смог избавится от значения "true". 
         // Как заставить его не приводить boolean к number?
-        sum1 += !isNaN(arr1[i]) && +arr1[i];
-        sum2 += !isNaN(arr2[i]) && +arr2[i];
+        if (i < len1) sum1 += !isNaN(arr1[i]) && +arr1[i];
+        if (i < len2) sum2 += !isNaN(arr2[i]) && +arr2[i];
     }
 
     // В требованиях ничего не сказано про равенство, поэтому реализовал через возвращение первого
@@ -37,11 +37,19 @@ var compareArrays = function(arr1, arr2) {
 */
 
 var calculator = function(a, znak, b) {
+
+    var regex = /^[%\^*+=\/._-]{1}$/g
+
+    if (!regex.test(znak)) throw 'Incorrect operation';
+
     switch (znak) {
         case ('+'): return a + b;
         case ('-'): return a - b;
         case ('*'): return a * b;
-        case ('/'): return a / b;
+        case ('/'): {
+            if (b !== 0) return a / b;
+            else throw 'Division by zero is not possible';
+        }
         case ('%'): return a % b;
         case ('^'): return a ** b;
         default: throw 'Incorrect operation';
@@ -76,4 +84,10 @@ var filter = function(arr, func) {
     }
 
     return res;
+}
+
+
+var test = function() {
+    console.log(calculator(10, '/', 0));
+    
 }
