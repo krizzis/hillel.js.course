@@ -85,9 +85,3 @@ var filter = function(arr, func) {
 
     return res;
 }
-
-
-var test = function() {
-    console.log(calculator(10, '/', 0));
-    
-}
