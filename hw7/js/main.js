@@ -36,11 +36,15 @@ assignObjects({ x: 10, y: 20 }, { z: 30 }) -> { x:10, y:20, z: 30 }
 assignObjects({ x: 10 }, { x: 20, y: 30 }) - > { x:20, y: 30 }
 */
 objct1 = { x: 10, y: 20, a: 15 };
-objct2 = { x:20, y: 30, z: 50 };
-objct3 = { c:20, d: 30, z: 50 };
+objct2 = { x: 20, y: 30, z: 50 };
+objct3 = { c: 20, d: 30, z: 80 };
 
 var assignObjects = function(obj1, obj2) {
-    return Object.assign(obj1, obj2);
+    for (key in obj2) {
+        obj1[key] = obj2[key];
+    }
+    
+    return obj1
 }
 
 /*
@@ -48,9 +52,14 @@ var assignObjects = function(obj1, obj2) {
 */
 
 var assignAllObjects = function() {
-    var res = Object.assign({}, arguments[0]);
-    for (var i = 1; i < arguments.length; i++) 
-        res = Object.assign(res, arguments[i]);
+    var res = arguments[0];
+    for (var i = 1; i < arguments.length; i++)
+    {
+        var obj = arguments[i];
+        for (key in obj) {
+            res[key] = obj[key];
+        }
+    }
 
     return res;
 }
