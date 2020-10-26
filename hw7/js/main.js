@@ -35,9 +35,6 @@ var flatObject = function(obj) {
 assignObjects({ x: 10, y: 20 }, { z: 30 }) -> { x:10, y:20, z: 30 }
 assignObjects({ x: 10 }, { x: 20, y: 30 }) - > { x:20, y: 30 }
 */
-objct1 = { x: 10, y: 20, a: 15 };
-objct2 = { x: 20, y: 30, z: 50 };
-objct3 = { c: 20, d: 30, z: 80 };
 
 var assignObjects = function(obj1, obj2) {
     for (key in obj2) {
