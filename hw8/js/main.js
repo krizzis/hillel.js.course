@@ -64,14 +64,11 @@ var data = {
 var data2 = {
     addRecord: function() {
         
-        var flag; 
+        var flag = false; 
         var len = arguments.length;
         if (typeof(arguments[len-1]) === 'boolean') {
             len--;
             flag = arguments[len];
-        }
-        else {
-            flag = false;
         }
         
         var res = this;
